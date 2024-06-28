@@ -2,6 +2,9 @@ import os
 import fitz  # PyMuPDF
 from PIL import Image
 import io
+from dotenv import load_dotenv
+# .envファイルの内容を読み込見込む
+load_dotenv()
 
 def extract_images_from_pdf(pdf_path, output_folder):
     pdf_filename = os.path.splitext(os.path.basename(pdf_path))[0]
@@ -33,12 +36,12 @@ def process_pdfs_in_folder(folder_path, output_folder):
                 extract_images_from_pdf(pdf_path, output_folder)
 
 # # 使用例
-# input_folder = "/path/to/input/folder"
+# input_folder = 'D:/patent_db/pupa/JPG_2021063'
 # output_folder = "/path/to/output/folder"
 
-input_dir = os.getenv('input_dir')
-output_dir = os.getenv('output_dir')
-
+input_dir = os.environ.get('INPUT_DIR')
+output_dir = os.environ.get('OUTPUT_DIR')
+print(input_dir)
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
