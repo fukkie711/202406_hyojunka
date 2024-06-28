@@ -32,11 +32,14 @@ def process_pdfs_in_folder(folder_path, output_folder):
                 pdf_path = os.path.join(root, file)
                 extract_images_from_pdf(pdf_path, output_folder)
 
-# 使用例
-input_folder = "/path/to/input/folder"
-output_folder = "/path/to/output/folder"
+# # 使用例
+# input_folder = "/path/to/input/folder"
+# output_folder = "/path/to/output/folder"
 
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
+input_dir = os.getenv('input_dir')
+output_dir = os.getenv('output_dir')
 
-process_pdfs_in_folder(input_folder, output_folder)
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+process_pdfs_in_folder(input_dir, output_dir)
